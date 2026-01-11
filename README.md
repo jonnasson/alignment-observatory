@@ -2,6 +2,8 @@
 
 **The definitive open-source toolkit for AI alignment research.**
 
+⚠️ **Work in Progress** - This project is under active development. APIs may change.
+
 Alignment Observatory is a comprehensive platform for understanding, testing, and ensuring AI systems behave as intended. It combines high-performance interpretability tools, visualization dashboards, and alignment benchmarks in a unified research environment.
 
 ## Project Status
@@ -11,7 +13,7 @@ Alignment Observatory is a comprehensive platform for understanding, testing, an
 | **Microscope** | Interpretability engine (Rust + Python) | Complete |
 | **API** | FastAPI backend for the dashboard | Complete |
 | **Dashboard** | WebGL visualization interface | In Progress |
-| **Benchmarks** | Alignment evaluation suite | Planned (Year 2) |
+| **Benchmarks** | Alignment evaluation suite | Planned |
 
 ## Repository Structure
 
@@ -33,7 +35,7 @@ alignment-observatory/
 │   ├── src/stores/      # Pinia state management
 │   └── src/visualization/ # WebGL/Three.js rendering
 │
-├── benchmarks/          # Alignment benchmarks (Year 2)
+├── benchmarks/          # Alignment benchmarks (planned)
 ├── docs/                # Documentation
 ├── ROADMAP.md           # Detailed project roadmap
 └── docker-compose.yml   # Container orchestration
@@ -108,15 +110,16 @@ Access the dashboard at http://localhost:5173
 - Real-time tracing via WebSocket
 - SAE feature browser
 
-## 5-Year Roadmap
+## Roadmap
 
-| Year | Focus | Description |
-|------|-------|-------------|
-| **1** | Interpretability | Microscope toolkit + Dashboard (Current) |
-| **2** | Benchmarks | 1000+ alignment test cases, adversarial generation |
-| **3** | Red-Teaming | Jailbreak detection, capability elicitation |
-| **4** | Guardrails | Runtime monitoring, anomaly detection |
-| **5** | Construction | Aligned-by-construction training methods |
+| Component | Focus | Description |
+|-----------|-------|-------------|
+| **Microscope** | Interpretability | High-performance tracing and analysis ✅ |
+| **Dashboard** | Visualization | WebGL-based exploration UI (80% complete) |
+| **Benchmarks** | Evaluation | 1000+ alignment test cases |
+| **Red Team** | Adversarial | Jailbreak detection, capability elicitation |
+| **Guardrails** | Runtime | Monitoring, anomaly detection |
+| **Construction** | Training | Aligned-by-construction methods |
 
 See [ROADMAP.md](ROADMAP.md) for detailed progress and plans.
 
