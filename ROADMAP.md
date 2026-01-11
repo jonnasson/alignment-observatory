@@ -2,6 +2,8 @@
 
 > **Mission:** Build the definitive open-source toolkit for AI alignment research.
 
+⚠️ **Work in Progress** - This project is under active development. APIs may change.
+
 Last Updated: January 2026
 
 ---
@@ -11,7 +13,7 @@ Last Updated: January 2026
 | Component | Status | Progress |
 |-----------|--------|----------|
 | Microscope (Interpretability) | **Complete** | ██████████ 100% |
-| Dashboard (Visualization) | **Next Up** | ░░░░░░░░░░ 0% |
+| Dashboard (Visualization) | **In Progress** | ████████░░ 80% |
 | Benchmarks | Not Started | ░░░░░░░░░░ 0% |
 | Red Team | Not Started | ░░░░░░░░░░ 0% |
 | Guardrails | Not Started | ░░░░░░░░░░ 0% |
@@ -19,7 +21,7 @@ Last Updated: January 2026
 
 ---
 
-## Year 1: Alignment Microscope (Current Focus)
+## Microscope (Interpretability Engine)
 
 ### Completed ✅
 
@@ -186,111 +188,74 @@ Last Updated: January 2026
 - [x] **Error handling hardening** - Replaced unsafe unwraps with robust patterns
 - [x] **Edge case testing** - 35+ tests for numerical stability, concurrency, memory
 
-### Next Up 📋
+---
 
-#### Month 1-2: Core Polish ✅ COMPLETE
-- [x] Add support for more model architectures (Mistral, Qwen, Gemma)
-- [x] Implement sparse autoencoders (SAE) integration
-- [x] Add streaming activation capture for large models
-- [x] Create unit tests for all Python modules
-- [x] Add Python type stubs for IDE support
-- [x] IOI circuit detection and validation
-- [ ] Performance benchmarking and optimization (optional)
+## Dashboard (Visualization)
 
-#### Month 3-4: Visualization Dashboard
-- [ ] Set up VueJS project in `dashboard/`
-- [ ] WebGL-based attention visualization (using Three.js or PixiJS)
-- [ ] Interactive circuit explorer with graph layout
-- [ ] Activation heatmaps with zoom/pan
-- [ ] Real-time tracing UI with WebSocket updates
-- [ ] Feature activation browser for SAE analysis
+### Completed ✅
+- [x] Set up VueJS project in `dashboard/`
+  - Vue 3 + TypeScript + Vite + TailwindCSS
+  - Pinia for state management, Vue Router for navigation
+  - ESLint + Prettier + Vitest configured
+- [x] WebGL-based attention visualization (using Three.js)
+  - `AttentionFlow3D` component with 3D token flow visualization
+  - `ThreeCanvas` wrapper with scene management
+  - `useThreeScene` and `useWebGLPerformance` composables
+- [x] Interactive circuit explorer with graph layout
+  - `CircuitGraph` using Cytoscape.js with dagre layout
+  - `CircuitControls`, `CircuitDetails`, `CircuitStats` components
+  - `useCircuitGraph` composable for graph interactions
+- [x] Activation heatmaps with zoom/pan
+  - `ActivationHeatmap`, `LayerStats`, `DimensionList`, `TokenNormChart`
+  - `useZoomPan` composable for interactions
+  - D3 integration for data visualization
+- [x] Real-time tracing UI with WebSocket updates
+  - `websocket.client.ts` service
+  - `trace.store.ts` for state management
+- [x] Feature activation browser for SAE analysis
+  - `FeatureActivationGrid`, `TopKFeatures`, `FeatureStats`, `FeatureCoactivation`
+  - `useSAE` composable
+- [x] IOI circuit detection UI
+  - `IOIHeadList`, `IOICircuitView`, `IOISentenceForm`, `IOIValidation`
+  - `useIOI` composable
+  - `IOIDetection` view
+- [ ] Integration testing with backend API
+- [ ] End-to-end testing with real models
 
-#### Month 5-6: Advanced Features
+### Planned
 - [ ] Concept probing (find where concepts are encoded)
-- [ ] Automated circuit discovery improvements
 - [ ] Logit lens implementation
 - [ ] Residual stream decomposition
-- [ ] Memory-efficient analysis for 70B+ models (streaming is ready)
 - [ ] Activation patching experiments UI
 
-### Year 1 Deliverables Checklist
-- [x] Core interpretability engine (Rust + Python)
-- [x] Support for Llama, Mistral, GPT, Qwen, Gemma architectures
-- [x] SAE integration with SAELens compatibility
-- [x] Streaming support for large models
-- [x] Comprehensive test suite (200+ tests)
-- [x] IOI circuit detection (Wang et al. 2022)
-- [x] Python type stubs for IDE support
-- [x] Robust error handling throughout
-- [ ] Web dashboard for visualization (Month 3-4)
-- [ ] Paper on novel circuit discovery methods
-
 ---
 
-## Year 2: Alignment Benchmarks (Future)
+## Future Plans
 
-### Planned Components
-```
-alignment-observatory/
-├── benchmarks/
-│   ├── deception_detection/
-│   ├── goal_stability/
-│   ├── corrigibility/
-│   ├── value_consistency/
-│   ├── power_seeking/
-│   └── specification_gaming/
-```
+### Benchmarks
+Alignment-specific evaluation suite:
+- Deception detection, goal stability, corrigibility
+- Value consistency, power seeking, specification gaming
+- 1000+ curated test cases with adversarial generation
+- Public leaderboard and HuggingFace integration
 
-### Key Features
-- 1000+ curated alignment test cases
-- Adversarial benchmark generation
-- Multi-turn evaluation
-- Public leaderboard
-- HuggingFace integration
+### Red Team
+Adversarial testing toolkit:
+- Jailbreak generation and goal hijacking
+- Capability elicitation and deceptive alignment detection
+- Multi-agent failure modes
 
----
+### Guardrails
+Runtime safety infrastructure:
+- Real-time monitoring and anomaly detection
+- Circuit breakers and audit logging
+- Human escalation protocols
 
-## Year 3: Adversarial Red-Teaming (Future)
-
-### Planned Components
-```
-alignment-observatory/
-├── red_team/
-│   ├── jailbreak_generator/
-│   ├── goal_hijacking/
-│   ├── capability_elicitation/
-│   ├── deceptive_alignment/
-│   └── multi_agent_failures/
-```
-
----
-
-## Year 4: Runtime Guardrails (Future)
-
-### Planned Components
-```
-alignment-observatory/
-├── guardrails/
-│   ├── runtime_monitor/
-│   ├── anomaly_detector/
-│   ├── circuit_breaker/
-│   ├── audit_logger/
-│   └── human_escalation/
-```
-
----
-
-## Year 5: Aligned by Construction (Future)
-
-### Planned Components
-```
-alignment-observatory/
-├── construction/
-│   ├── value_specification/
-│   ├── verified_training/
-│   ├── constitutional_engine/
-│   └── proof_of_alignment/
-```
+### Construction
+Alignment-by-design tools:
+- Value specification frameworks
+- Verified training pipelines
+- Constitutional AI engine
 
 ---
 
@@ -353,16 +318,53 @@ alignment-observatory/
 │   │   └── test_edge_cases.py # ~400 lines (NEW - edge cases)
 │   └── examples/
 │       └── quickstart.py      # ~200 lines
-├── benchmarks/                 # Year 2 (empty)
-├── dashboard/                  # Year 1 (VueJS - next up)
+├── benchmarks/                 # Future (empty)
+├── dashboard/                  # In Progress (80% complete)
+│   ├── package.json           # Vue 3 + TypeScript + Vite
+│   ├── tsconfig.json          # TypeScript config
+│   ├── src/
+│   │   ├── main.ts            # App entry point
+│   │   ├── App.vue            # Root component
+│   │   ├── router/index.ts    # Vue Router setup
+│   │   ├── stores/            # Pinia stores
+│   │   │   ├── model.store.ts
+│   │   │   ├── trace.store.ts
+│   │   │   ├── circuit.store.ts
+│   │   │   └── ui.store.ts
+│   │   ├── views/             # Page components
+│   │   │   ├── DashboardHome.vue
+│   │   │   ├── AttentionExplorer.vue
+│   │   │   ├── ActivationBrowser.vue
+│   │   │   ├── CircuitDiscovery.vue
+│   │   │   ├── SAEAnalysis.vue
+│   │   │   ├── IOIDetection.vue
+│   │   │   └── Settings.vue
+│   │   ├── components/
+│   │   │   ├── common/        # 8 shared components
+│   │   │   ├── layout/        # Header, Sidebar, MainLayout
+│   │   │   ├── attention/     # AttentionHeatmap, HeadSelector, etc.
+│   │   │   ├── attention3d/   # AttentionFlow3D, Controls, Legend
+│   │   │   ├── activation/    # Heatmap, LayerStats, DimensionList
+│   │   │   ├── circuit/       # CircuitGraph, Details, Stats
+│   │   │   ├── sae/           # FeatureGrid, TopK, Coactivation
+│   │   │   ├── ioi/           # HeadList, CircuitView, Validation
+│   │   │   └── three/         # ThreeCanvas WebGL wrapper
+│   │   ├── composables/       # 11 Vue composables
+│   │   │   ├── useZoomPan.ts, useColorScale.ts
+│   │   │   ├── useThreeScene.ts, useWebGLPerformance.ts
+│   │   │   ├── useCircuitGraph.ts, useIOI.ts, useSAE.ts
+│   │   │   └── useActivationViz.ts, useAttentionViz.ts
+│   │   ├── services/          # API and WebSocket clients
+│   │   └── types/             # 8 TypeScript type definition files
 └── docs/                       # (empty)
 ```
 
-**Total code written:** ~9,000+ lines (Rust + Python + Tests + Type Stubs)
+**Total code written:** ~14,000+ lines (Rust + Python + Tests + Dashboard)
 - Rust core: ~4,100 lines
 - Python package: ~2,600 lines
 - Type stubs: ~500 lines
 - Tests: ~2,400 lines
+- Dashboard: ~5,000+ lines (80+ Vue/TS files)
 
 ---
 
@@ -385,16 +387,33 @@ pytest tests/ -v -m "not integration"
 python -c "from alignment_microscope import Microscope, SAEWrapper, StreamingMicroscope; print('Ready!')"
 ```
 
+### Dashboard Development
+
+```bash
+# Navigate to dashboard
+cd ~/alignment-observatory/dashboard
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
+```
+
 ---
 
 ## Contributing
 
 Priority areas for contribution:
-1. **Dashboard development** - VueJS + WebGL visualization
-2. **Circuit discovery algorithms** - Improve automatic detection
-3. **Documentation** - Examples, tutorials, API docs
-4. **Integration tests** - Real model testing
-5. **Performance** - Profiling and optimization
+1. **Dashboard polish** - Integration testing, E2E tests, bug fixes
+2. **Backend API** - Python FastAPI server to connect microscope to dashboard
+3. **Circuit discovery algorithms** - Improve automatic detection
+4. **Documentation** - Examples, tutorials, API docs
+5. **Integration tests** - Real model testing
+6. **Performance** - Profiling and optimization
 
 ---
 
