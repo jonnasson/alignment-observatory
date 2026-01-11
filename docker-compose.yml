@@ -1,0 +1,63 @@
+# Alignment Observatory - Docker Compose Configuration
+
+services:
+  # FastAPI Backend
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    container_name: alignment-observatory-api
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./api:/app/api
+      - ./microscope:/app/microscope
+      - model-cache:/app/models
+      - trace-cache:/app/traces
+    environment:
+      - ENVIRONMENT=development
+      - DEBUG=true
+      - MODEL_CACHE_DIR=/app/models
+      - TRACE_CACHE_DIR=/app/traces
+      - CORS_ORIGINS=["http://localhost:5173","http://127.0.0.1:5173"]
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: all
+    #           capabilities: [gpu]
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+
+  # Vue.js Frontend
+  dashboard:
+    build:
+      context: ./dashboard
+      dockerfile: Dockerfile
+    container_name: alignment-observatory-dashboard
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./dashboard:/app
+      - /app/node_modules
+    environment:
+      - VITE_API_URL=http://localhost:8000
+    depends_on:
+      api:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  model-cache:
+    name: alignment-observatory-models
+  trace-cache:
+    name: alignment-observatory-traces
+
+networks:
+  default:
+    name: alignment-observatory-network

@@ -1,0 +1,92 @@
+@import 'tailwindcss';
+
+/* Custom theme configuration for Alignment Observatory */
+@theme {
+  /* Primary colors - indigo-based for interpretability/science feel */
+  --color-primary-50: oklch(0.97 0.01 264);
+  --color-primary-100: oklch(0.94 0.03 264);
+  --color-primary-200: oklch(0.87 0.06 264);
+  --color-primary-300: oklch(0.78 0.10 264);
+  --color-primary-400: oklch(0.67 0.14 264);
+  --color-primary-500: oklch(0.55 0.18 264);
+  --color-primary-600: oklch(0.48 0.19 264);
+  --color-primary-700: oklch(0.42 0.17 264);
+  --color-primary-800: oklch(0.36 0.14 264);
+  --color-primary-900: oklch(0.31 0.11 264);
+  --color-primary-950: oklch(0.23 0.09 264);
+
+  /* Accent colors for visualization categories */
+  --color-attention: oklch(0.65 0.20 25);    /* Orange-red for attention */
+  --color-activation: oklch(0.65 0.18 145);  /* Teal for activations */
+  --color-circuit: oklch(0.65 0.20 290);     /* Purple for circuits */
+  --color-sae: oklch(0.65 0.18 85);          /* Yellow-green for SAE */
+
+  /* Font configuration */
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  /* Border radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+}
+
+/* Base styles */
+@layer base {
+  html {
+    @apply antialiased;
+  }
+
+  body {
+    @apply bg-gray-50 text-gray-900 dark:bg-gray-950 dark:text-gray-100;
+    @apply min-h-screen;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+    margin: 0;
+  }
+
+  #app {
+    @apply min-h-screen;
+  }
+
+  /* Smooth scrolling */
+  * {
+    scroll-behavior: smooth;
+  }
+
+  /* Focus styles for accessibility */
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-primary-500;
+  }
+}
+
+/* Custom utility classes */
+@layer utilities {
+  /* Visualization container */
+  .viz-container {
+    @apply bg-white dark:bg-gray-900 rounded-lg shadow-sm border border-gray-200 dark:border-gray-800;
+  }
+
+  /* Heatmap cell hover */
+  .heatmap-cell:hover {
+    @apply ring-2 ring-white/50;
+  }
+
+  /* Graph node styles */
+  .graph-node {
+    @apply transition-transform duration-150 ease-out;
+  }
+
+  .graph-node:hover {
+    @apply scale-110;
+  }
+
+  /* Token display */
+  .token {
+    @apply inline-flex items-center px-1.5 py-0.5 rounded text-sm font-mono;
+  }
+
+  .token-highlighted {
+    @apply bg-yellow-200 dark:bg-yellow-900/50;
+  }
+}
