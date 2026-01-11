@@ -125,6 +125,7 @@ print(circuit.to_dot())  # Graphviz DOT format
 ```
 
 **IOI Circuit Components:**
+
 - **Name Mover Heads** (L9-11): Move IO name to final position
 - **S-Inhibition Heads** (L7-8): Inhibit subject from being copied
 - **Duplicate Token Heads** (L0-2): Detect repeated tokens
@@ -132,6 +133,7 @@ print(circuit.to_dot())  # Graphviz DOT format
 - **Backup Name Mover Heads** (L9-11): Redundant name movers
 
 **Known GPT-2 Heads:**
+
 ```python
 known = KnownIOIHeads.all_gpt2()
 # Returns: {
@@ -195,6 +197,7 @@ alignment-microscope/
 ## Performance
 
 The Rust core provides:
+
 - Zero-copy analysis where possible
 - Parallel computation across layers/heads
 - Memory-efficient processing for large models (70B+)
@@ -202,28 +205,26 @@ The Rust core provides:
 
 ## Roadmap
 
-This is part of a 5-year project to build comprehensive AI alignment tooling:
+Part of the [Alignment Observatory](https://github.com/jonnasson/alignment-observatory) project:
 
-- **Year 1**: Interpretability toolkit ✅ **COMPLETE**
-  - Core engine (Rust + Python) ✅
-  - Multi-architecture support (Llama, GPT-2, Mistral, Qwen, Gemma) ✅
-  - IOI circuit detection ✅
-  - SAE integration ✅
-  - Streaming for large models ✅
-  - 200+ unit tests ✅
-  - Full type stub support ✅
-  - **Next: Web dashboard (VueJS + Three.js)**
-- **Year 2**: Alignment benchmarks
-- **Year 3**: Red-teaming framework
-- **Year 4**: Runtime guardrails
-- **Year 5**: Aligned-by-construction training
+| Component        | Status      | Description                            |
+| ---------------- | ----------- | -------------------------------------- |
+| **Microscope**   | ✅ Complete | Interpretability engine (this package) |
+| **Dashboard**    | 80%         | WebGL visualization (Vue + Three.js)   |
+| **Benchmarks**   | Planned     | Alignment evaluation suite             |
+| **Red Team**     | Planned     | Adversarial testing framework          |
+| **Guardrails**   | Planned     | Runtime monitoring                     |
+| **Construction** | Planned     | Aligned-by-design training             |
+
+See [ROADMAP.md](../ROADMAP.md) for detailed progress.
 
 ## Contributing
 
-We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+We welcome contributions!
 
 Key areas where help is needed:
-- **Dashboard development** - VueJS + WebGL visualization (starting soon!)
+
+- **Dashboard polish** - Integration testing, E2E tests
 - Additional circuit discovery algorithms
 - Performance benchmarking and optimization
 - Documentation and examples
